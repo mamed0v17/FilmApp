@@ -1,11 +1,12 @@
 package kg.geektech.filmapp.ui.films;
 
-import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,7 +35,7 @@ public class FilmsFragment extends Fragment implements OnItemClick {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        adapter = new FilmsAdapter();
+        adapter = new FilmsAdapter(this);
         binding = FragmentFilmsBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -68,6 +69,11 @@ public class FilmsFragment extends Fragment implements OnItemClick {
 
     @Override
     public void click(String id) {
-
+        Bundle bundle = new Bundle();
+        bundle.putString("id",id);
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+        navController.navigate(R.id.filmsDetailFragment, bundle);
     }
+
+
 }

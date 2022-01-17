@@ -18,8 +18,10 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmsViewHol
     private List<Film> films = new ArrayList<>();
     private OnItemClick listener;
 
-    public FilmsAdapter() {
-        this.films = films;
+
+    public FilmsAdapter(OnItemClick listener){
+        this.listener = listener;
+
     }
 
     public void setFilms(List<Film> films) {
@@ -40,11 +42,8 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmsViewHol
     @Override
     public void onBindViewHolder(@NonNull FilmsViewHolder holder, int position) {
         holder.onBind(films.get(position));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.click(films.get(position).getId());
-            }
+        holder.itemView.setOnClickListener(view -> {
+            listener.click(films.get(position).getId());
         });
     }
 
