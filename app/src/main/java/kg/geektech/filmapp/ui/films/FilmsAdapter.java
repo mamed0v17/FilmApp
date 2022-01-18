@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,9 +44,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmsViewHol
     @Override
     public void onBindViewHolder(@NonNull FilmsViewHolder holder, int position) {
         holder.onBind(films.get(position));
-        holder.itemView.setOnClickListener(view -> {
-            listener.click(films.get(position).getId());
-        });
+
     }
 
     @Override
@@ -62,7 +62,9 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmsViewHol
 
         public void onBind(Film film) {
             binding.tittle.setText(film.getTittle());
-            binding.description.setText(film.getDescription());
+            Glide.with(binding.tittle.getContext()).load(film.getImage());
+            itemView.setOnClickListener(view -> listener.click(film));
         }
     }
 }
+

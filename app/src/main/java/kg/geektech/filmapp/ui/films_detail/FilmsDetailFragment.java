@@ -33,15 +33,21 @@ private FragmentFilmsBinding binding;
         return binding.getRoot();
     }
 
+    private void cinema() {
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+
         String id = getArguments().getString("id");
 
         App.api.getFilmById(id).enqueue(new Callback<Film>() {
             @Override
             public void onResponse(Call<Film> call, Response<Film> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful() ){
                     Film film = response.body();
 
                 }

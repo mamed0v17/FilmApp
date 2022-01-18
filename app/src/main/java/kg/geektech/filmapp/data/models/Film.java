@@ -7,6 +7,7 @@ public class Film {
     String tittle;
     @SerializedName("original_tittle")
     String originalTittle;
+    String image;
     @SerializedName("description")
     String description;
 
@@ -40,5 +41,13 @@ public class Film {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

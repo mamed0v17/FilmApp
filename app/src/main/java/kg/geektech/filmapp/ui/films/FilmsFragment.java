@@ -32,6 +32,8 @@ public class FilmsFragment extends Fragment implements OnItemClick {
 
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,7 +46,6 @@ public class FilmsFragment extends Fragment implements OnItemClick {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.recycler.setAdapter(adapter);
-
         fetchFilms();
     }
 
@@ -68,12 +69,10 @@ public class FilmsFragment extends Fragment implements OnItemClick {
     }
 
     @Override
-    public void click(String id) {
+    public void click(Film film) {
         Bundle bundle = new Bundle();
-        bundle.putString("id",id);
+        bundle.putString("id",film.getId());
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         navController.navigate(R.id.filmsDetailFragment, bundle);
-    }
+    }}
 
-
-}
