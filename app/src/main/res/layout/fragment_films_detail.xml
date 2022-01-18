@@ -8,7 +8,7 @@
     tools:context=".ui.films_detail.FilmsDetailFragment">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/imageTittle"
         android:layout_width="200dp"
         android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,7 +17,7 @@
     <TextView
         android:id="@+id/textTittle"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintTop_toBottomOf="@+id/imageTittle"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

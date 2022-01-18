@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ import kg.geektech.filmapp.databinding.ItemFilmsBinding;
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmsViewHolder> {
     private List<Film> films = new ArrayList<>();
     private OnItemClick listener;
+    private ImageView image;
 
 
     public FilmsAdapter(OnItemClick listener){
@@ -62,7 +64,8 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmsViewHol
 
         public void onBind(Film film) {
             binding.tittle.setText(film.getTittle());
-            Glide.with(binding.tittle.getContext()).load(film.getImage());
+            binding.description.setText(film.getDescription());
+            Glide.with(binding.image.getContext()).load(film.getImage()).into(binding.image);
             itemView.setOnClickListener(view -> listener.click(film));
         }
     }
